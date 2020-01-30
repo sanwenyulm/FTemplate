@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.iotyun.manager.mapper.UserAuthMapper">
+  <resultMap id="BaseResultMap" type="com.iotyun.manager.entity.UserAuth">
+    <id column="Id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="level" jdbcType="INTEGER" property="level" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="fun_1" jdbcType="VARCHAR" property="fun1" />
+    <result column="fun_1_enable" jdbcType="BIT" property="fun1Enable" />
+    <result column="fun_2" jdbcType="VARCHAR" property="fun2" />
+    <result column="fun_2_enable" jdbcType="BIT" property="fun2Enable" />
+    <result column="fun_3" jdbcType="VARCHAR" property="fun3" />
+    <result column="fun_3_enable" jdbcType="BIT" property="fun3Enable" />
+    <result column="creat_at" jdbcType="TIMESTAMP" property="creatAt" />
+    <result column="update_at" jdbcType="TIMESTAMP" property="updateAt" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    Id, name, level, description, fun_1, fun_1_enable, fun_2, fun_2_enable, fun_3, fun_3_enable, 
+    creat_at, update_at
+  </sql>
+  <select id="selectByExample" parameterType="com.iotyun.manager.entity.UserAuthExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from auth
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from auth
+    where Id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from auth
+    where Id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.iotyun.manager.entity.UserAuthExample">
+    delete from auth
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.iotyun.manager.entity.UserAuth">
+    insert into auth (Id, name, level, 
+      description, fun_1, fun_1_enable, 
+      fun_2, fun_2_enable, fun_3, 
+      fun_3_enable, creat_at, update_at
+      )
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{level,jdbcType=INTEGER}, 
+      #{description,jdbcType=VARCHAR}, #{fun1,jdbcType=VARCHAR}, #{fun1Enable,jdbcType=BIT}, 
+      #{fun2,jdbcType=VARCHAR}, #{fun2Enable,jdbcType=BIT}, #{fun3,jdbcType=VARCHAR}, 
+      #{fun3Enable,jdbcType=BIT}, #{creatAt,jdbcType=TIMESTAMP}, #{updateAt,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.iotyun.manager.entity.UserAuth">
+    insert into auth
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="level != null">
+        level,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="fun1 != null">
+        fun_1,
+      </if>
+      <if test="fun1Enable != null">
+        fun_1_enable,
+      </if>
+      <if test="fun2 != null">
+        fun_2,
+      </if>
+      <if test="fun2Enable != null">
+        fun_2_enable,
+      </if>
+      <if test="fun3 != null">
+        fun_3,
+      </if>
+      <if test="fun3Enable != null">
+        fun_3_enable,
+      </if>
+      <if test="creatAt != null">
+        creat_at,
+      </if>
+      <if test="updateAt != null">
+        update_at,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null">
+        #{level,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="fun1 != null">
+        #{fun1,jdbcType=VARCHAR},
+      </if>
+      <if test="fun1Enable != null">
+        #{fun1Enable,jdbcType=BIT},
+      </if>
+      <if test="fun2 != null">
+        #{fun2,jdbcType=VARCHAR},
+      </if>
+      <if test="fun2Enable != null">
+        #{fun2Enable,jdbcType=BIT},
+      </if>
+      <if test="fun3 != null">
+        #{fun3,jdbcType=VARCHAR},
+      </if>
+      <if test="fun3Enable != null">
+        #{fun3Enable,jdbcType=BIT},
+      </if>
+      <if test="creatAt != null">
+        #{creatAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateAt != null">
+        #{updateAt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.iotyun.manager.entity.UserAuthExample" resultType="java.lang.Long">
+    select count(*) from auth
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update auth
+    <set>
+      <if test="record.id != null">
+        Id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.name != null">
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.level != null">
+        level = #{record.level,jdbcType=INTEGER},
+      </if>
+      <if test="record.description != null">
+        description = #{record.description,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fun1 != null">
+        fun_1 = #{record.fun1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fun1Enable != null">
+        fun_1_enable = #{record.fun1Enable,jdbcType=BIT},
+      </if>
+      <if test="record.fun2 != null">
+        fun_2 = #{record.fun2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fun2Enable != null">
+        fun_2_enable = #{record.fun2Enable,jdbcType=BIT},
+      </if>
+      <if test="record.fun3 != null">
+        fun_3 = #{record.fun3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fun3Enable != null">
+        fun_3_enable = #{record.fun3Enable,jdbcType=BIT},
+      </if>
+      <if test="record.creatAt != null">
+        creat_at = #{record.creatAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateAt != null">
+        update_at = #{record.updateAt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update auth
+    set Id = #{record.id,jdbcType=INTEGER},
+      name = #{record.name,jdbcType=VARCHAR},
+      level = #{record.level,jdbcType=INTEGER},
+      description = #{record.description,jdbcType=VARCHAR},
+      fun_1 = #{record.fun1,jdbcType=VARCHAR},
+      fun_1_enable = #{record.fun1Enable,jdbcType=BIT},
+      fun_2 = #{record.fun2,jdbcType=VARCHAR},
+      fun_2_enable = #{record.fun2Enable,jdbcType=BIT},
+      fun_3 = #{record.fun3,jdbcType=VARCHAR},
+      fun_3_enable = #{record.fun3Enable,jdbcType=BIT},
+      creat_at = #{record.creatAt,jdbcType=TIMESTAMP},
+      update_at = #{record.updateAt,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.iotyun.manager.entity.UserAuth">
+    update auth
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null">
+        level = #{level,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="fun1 != null">
+        fun_1 = #{fun1,jdbcType=VARCHAR},
+      </if>
+      <if test="fun1Enable != null">
+        fun_1_enable = #{fun1Enable,jdbcType=BIT},
+      </if>
+      <if test="fun2 != null">
+        fun_2 = #{fun2,jdbcType=VARCHAR},
+      </if>
+      <if test="fun2Enable != null">
+        fun_2_enable = #{fun2Enable,jdbcType=BIT},
+      </if>
+      <if test="fun3 != null">
+        fun_3 = #{fun3,jdbcType=VARCHAR},
+      </if>
+      <if test="fun3Enable != null">
+        fun_3_enable = #{fun3Enable,jdbcType=BIT},
+      </if>
+      <if test="creatAt != null">
+        creat_at = #{creatAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateAt != null">
+        update_at = #{updateAt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.iotyun.manager.entity.UserAuth">
+    update auth
+    set name = #{name,jdbcType=VARCHAR},
+      level = #{level,jdbcType=INTEGER},
+      description = #{description,jdbcType=VARCHAR},
+      fun_1 = #{fun1,jdbcType=VARCHAR},
+      fun_1_enable = #{fun1Enable,jdbcType=BIT},
+      fun_2 = #{fun2,jdbcType=VARCHAR},
+      fun_2_enable = #{fun2Enable,jdbcType=BIT},
+      fun_3 = #{fun3,jdbcType=VARCHAR},
+      fun_3_enable = #{fun3Enable,jdbcType=BIT},
+      creat_at = #{creatAt,jdbcType=TIMESTAMP},
+      update_at = #{updateAt,jdbcType=TIMESTAMP}
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
