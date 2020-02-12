@@ -1,0 +1,4 @@
+jwt:
+    config:
+      key: sanwenyu-user-app-key-142857
+      ttl: 3600000

@@ -1,0 +1,19 @@
+server: 
+  port: 18000
+spring:
+  application:
+    name: microservice-config
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitee.com/sanwenyulm/appconfig.git
+          username: sanwenyulm
+          password: 434900iioo.
+  rabbitmq:
+    host: 122.51.43.155
+management: #暴露触发消息总线的地址
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh
