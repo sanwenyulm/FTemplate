@@ -1,0 +1,2 @@
+com\sanwenyu\gateway\Application.class
+com\sanwenyu\gateway\filter\AppZuulFileter.class
