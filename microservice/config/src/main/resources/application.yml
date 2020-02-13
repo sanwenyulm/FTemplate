@@ -9,7 +9,7 @@ spring:
         git:
           uri: https://gitee.com/sanwenyulm/appconfig.git
           username: sanwenyulm
-          password: 434900iioo.
+          password: *******
   rabbitmq:
     host: 122.51.43.155
 management: #暴露触发消息总线的地址
