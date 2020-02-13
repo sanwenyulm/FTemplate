@@ -1,8 +1,8 @@
-##说明
+# 说明
 [Boot 和 Cloud版本需要对应]：
 父工程将Spring Cloud 锁在Finchley.M9版本
 Spring Boot使用2.0.1版本
-##介绍
+# 介绍
 1. 模板子模块使用了[模板构建提取码:is4s](https://pan.baidu.com/s/1zzOtAnhWNb8xegJFAzsO_Q)，可以快速基于数据库构建springAll+cloud2.0版本的模板工程。
 2. 采用最小独立微服务模式 ：用户微服务、文章微服务、评论微服务、基础微服务、配置微服务、服务发现微服务、网关微服务。IDEA模块开发自动构建docker镜像到服务器的私有镜像仓库。
 3. spring cloud config+bus+git服务器实现动态不宕机配置。
@@ -13,7 +13,7 @@ Spring Boot使用2.0.1版本
 8. MongoDB实现大吞吐量但价值不高的数据存储管理。
 9. 基于雪花算法的分布式ID生成器。
 10. 依赖服务使用POM依赖+注解方式启动。
-##依赖的Docker容器：
+# 依赖的Docker容器：
 MySql:
 >docker run -di --name=app_mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=yourpassword   mysql
 
@@ -36,10 +36,10 @@ RabbitMQ:
 JDK1.8应用容器基础镜像：
 > 基于centos7和1.8构建。此项目基于jdk1.8.0_171版本。
 
-##JPA Sql辅助工具：
+# JPA Sql辅助工具：
 Navicat for MySql
 
-##测试：
+# 测试：
 RestFul Api接口工具
 PostMan+Swagger
 
