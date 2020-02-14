@@ -103,6 +103,7 @@ body:选择raw和application/json
 122.51.43.155:8686/user/user
 返回权限不足
 
+<<<<<<< HEAD
 # 防止被挖矿 
 测试开阶段一直被不停的种挖矿程序。docker 管理 和redis都要设置访问权限。
 
@@ -110,6 +111,8 @@ body:选择raw和application/json
 Itcast 左龙飞 小智智^_^ 无私奉献的博主
 
 
+=======
+>>>>>>> 76c93cca1e38ccce256ed074852c3bbd333cfcb9
 
 
 
